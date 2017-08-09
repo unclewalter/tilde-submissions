@@ -1,0 +1,24 @@
+{
+  "body": {
+    "timestamp":              1234567890,
+    "name":                   "Kathryn Rogers",
+    "email":                  "kathryn.rogers36@example.com",
+    "confirm_email":          "kathryn.rogers36@example.com",
+    "phone_number":           "(252)-879-5793",
+    "discipline":             "performance",
+    "artistBio":              "I am human",
+    "cv":                     "I've done stuff",
+    "project_title":          "EnsMeble",
+    "short_description":      "I am everyone and everyone is me",
+    "long_description":       "I have a God complex",
+    "duration":               "Eternity",
+    "technical_requirements": "One universe over which to hold dominion",
+    "setup_time":             "43 billion years",
+    "instrumentation":        "Everything",
+    "outsideOfAustralia":     "Only sometimes",
+    "soughtFunding":          "Money is meaningless",
+    "focus_areas":            "Site specific",
+    "links":                  "http://www.scientology.org/",
+    "comments":               "Pffff"
+  }
+}
