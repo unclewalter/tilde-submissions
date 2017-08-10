@@ -31,19 +31,13 @@ Process:
 5. Pushes the PDF file to S3.
 */
 
-module.exports.processSubmission = function(submissionDetails, context) {
-  var hash = crypto.createHash('md5').update(submissionDetails.email).digest("hex");
-  var identifier = hash + '_' + submissionDetails.timestamp;
-  var filename = identifier + '.pdf';
+module.exports.processSubmission = function(submissionDetails, callback) {
+  const hash = crypto.createHash('md5').update(submissionDetails.email).digest("hex");
+  const identifier = submissionDetails.timestamp + '_' + hash;
 
-  if (submissionDetails.cv.fname) {
-    var cvFileExt = submissionDetails.cv.fname.split('.').pop();
-  }
-  var cvfilename = identifier + '-cv.' + cvFileExt;
+  const docClient = new AWS.DynamoDB.DocumentClient();
 
-  var docClient = new AWS.DynamoDB.DocumentClient();
-
-  var params = {
+  const params = {
     TableName: "tilde-submissions",
     Item: removeEmptyStringElements(submissionDetails)
   };
@@ -53,14 +47,14 @@ module.exports.processSubmission = function(submissionDetails, context) {
   console.log("Adding a new item...");
   docClient.put(params, function(err, data) {
     if (err) {
-      context.fail("Unable to add item. Error JSON: "+JSON.stringify(err, null, 2));
+      callback(("Unable to add item. Error JSON: "+JSON.stringify(err, null, 2)), null);
     } else {
       console.log("Added item:", JSON.stringify(data, null, 2));
+      var returnPayload = {
+        submissionID: identifier,
+        message: "Submission Successful"
+      }
     }
-    var returnPayload = {
-      cvfilename: cvfilename,
-      message: err
-    }
-    context.succeed(returnPayload);
+    callback(err, returnPayload);
   });
 };

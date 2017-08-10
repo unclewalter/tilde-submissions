@@ -8,7 +8,8 @@ var AWS = require('aws-sdk');
 
 module.exports.main = (evt, context, callback) => {
 
-  const event = evt.body;
+  const data = JSON.parse(evt.body);
+  const event = data.data;
   const datetime  = new Date();
   const timestamp = datetime.getTime(); // Generate timestamp for server time
 
@@ -17,18 +18,18 @@ module.exports.main = (evt, context, callback) => {
   console.log("email address =", event.email);
   console.log("time stamp =", timestamp);
 
-  if (!event.email) {
-    context.fail("No email address provided");
-  } else if (event.email != event.confirm_email) {
-    context.fail("Email address and confirmation do not match!");
-  }
+  // if (!event.email) {
+  //   context.fail("No email address provided");
+  // } else if (event.email != event.confirm_email) {
+  //   context.fail("Email address and confirmation do not match!");
+  // }
   /*
   TODO: Add proper email validation
         Add responses for user feedback
   */
 
   var submissionDetails = {
-    "timestamp":              event.timestamp,
+    "timestamp":              timestamp,
     "name":                   event.name,
     "email":                  event.email,
     "confirm_email":          event.confirm_email,
@@ -41,6 +42,8 @@ module.exports.main = (evt, context, callback) => {
     "long_description":       event.long_description,
     "duration":               event.duration,
     "technical_requirements": event.technical_requirements,
+    "your_equipment":         event.your_equipment,
+    "tilde_equipment":        event.tilde_equipment,
     "setup_time":             event.setup_time,
     "instrumentation":        event.instrumentation,
     "outsideOfAustralia":     event.outsideOfAustralia,
@@ -49,9 +52,20 @@ module.exports.main = (evt, context, callback) => {
     "links":                  event.links,
     "comments":               event.comments
   };
-  proc.processSubmission(submissionDetails, context);
-  // const submissionID = uuid.v1();
 
-  // const str = "submissionID: "+submissionID;
-  // return callback(null, str);
+
+  proc.processSubmission(submissionDetails, function(err, res) {
+    const headers = {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Credentials': true
+    };
+    const response = {
+      statusCode: 200,
+      headers: headers,
+      body: JSON.stringify(res)
+    }
+
+    callback(err, response)
+
+  });
 };

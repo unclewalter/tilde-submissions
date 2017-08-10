@@ -4,7 +4,12 @@ module.exports = {
   entry: "./wp/entry.jsx",
   output: {
       path: path.resolve(__dirname, 'public/assets/javascripts/'),
-      filename: "bundle.js"
+      filename: "submission.js"
+  },
+  devServer: {
+      headers: {
+          'Access-Control-Allow-Origin': '*'
+      }
   },
   module: {
     loaders: [
