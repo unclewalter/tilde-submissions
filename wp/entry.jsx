@@ -4,5 +4,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.jsx';
+import { HashRouter } from 'react-router-dom'
 
-ReactDOM.render(<App />, document.getElementById('react-root'));
+ReactDOM.render((
+  <HashRouter>
+    <App />
+  </HashRouter>
+), document.getElementById('react-root'));
