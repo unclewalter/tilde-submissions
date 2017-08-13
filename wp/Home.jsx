@@ -6,7 +6,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <Link to='/calls/projects'>Projects</Link>
+        <Link to='/projects'>Projects</Link>
       </div>
     );
   }

@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <Switch>
         <Route exact path='/' component={Home}/>
-        <Route path='/calls/:form' component={SubmissionForms}/>
+        <Route path='/:form' component={SubmissionForms}/>
       </Switch>
     );
   }
