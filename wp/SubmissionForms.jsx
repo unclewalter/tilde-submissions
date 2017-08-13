@@ -51,6 +51,13 @@ class SubmissionForms extends Component {
     };
   }
 
+  componentDidMount() {
+    this.setState({
+      formVisible: true,
+      responseMessage: ''
+    });
+  }
+
   render() {
     const formSelection = this.props.match.params.form;
     const formSchema = schemas[formSelection];
