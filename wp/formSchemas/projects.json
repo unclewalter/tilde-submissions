@@ -20,7 +20,6 @@
       "tilde_equipment",
       "setup_time",
       "outsideOfAustralia",
-      "soughtFunding",
       "focus_areas",
       "links"
     ],
@@ -106,17 +105,17 @@
       },
       "outsideOfAustralia": {
         "type": "boolean",
-        "title": "Outside Of Australia"
+        "title": "Are you based outside of Australia?"
       },
       "soughtFunding": {
         "type": "string",
-        "title": "Sought Funding",
+        "title": "Have you sought or will you seek funding for travel?",
         "description": "Please give details of the submission and notification dates."
       },
       "focus_areas": {
         "type": "string",
-        "title": "Focus Areas",
-        "description": "Please provide a brief description of how your project addresses these areas. This information will be used by the assessors and will not appear in the program. NB: Site-specific works should go further than simply reacting to the site through improvisation. Artists are encouraged to visit Testing Grounds and discuss possibilities with the Tilde team (info@tilde.net.au)"
+        "title": "Does your project address any of this year's focus areas?",
+        "description": "Solo and ensemble repertoire | Female, trans and intersex composers and sound artists | Site-specific works – Please provide a brief description of how your project addresses these areas. This information will be used by the assessors and will not appear in the program. NB: Site-specific works should go further than simply reacting to the site through improvisation. Artists are encouraged to visit Testing Grounds and discuss possibilities with the Tilde team (info@tilde.net.au)"
       },
       "links": {
         "type": "string",
