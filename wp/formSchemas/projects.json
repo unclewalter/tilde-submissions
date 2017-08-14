@@ -21,7 +21,8 @@
       "setup_time",
       "outsideOfAustralia",
       "focus_areas",
-      "links"
+      "links",
+      "checkedAestheticConsiderations"
     ],
     "properties": {
       "name": {
@@ -126,6 +127,10 @@
         "type": "string",
         "title": "Comments",
         "description": "Comments/other information"
+      },
+      "checkedAestheticConsiderations": {
+        "type": "boolean",
+        "title": "Please confirm that you have read the aesthetic scope on our website"
       }
     }
   },

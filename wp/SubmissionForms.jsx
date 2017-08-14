@@ -8,6 +8,9 @@ function validate(formData, errors) {
   if (formData.email != formData.confirm_email) {
     errors.confirm_email.addError("Email and confirmation do not match");
   }
+  if (!formData.checkedAestheticConsiderations) {
+    errors.checkedAestheticConsiderations.addError("Please be sure to read the aesthetic considerations on the previous page and then mark the check box before submitting");
+  }
   return errors;
 }
 
