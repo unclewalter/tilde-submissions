@@ -56,7 +56,7 @@
       "artistBio": {
         "type": "string",
         "title": "Artist Bio (up to 500 words)",
-        "description": "Give us an idea of who you are, including: your practice and artistic interests. This will be used as programming promotional material and for peer assessment."
+        "description": "Give us an idea of who you are, including: your practice and artistic interests. This will be used for promotional material, the Festival program, and for peer assessment."
       },
       "cv": {
         "type": "string",
@@ -116,7 +116,7 @@
       "focus_areas": {
         "type": "string",
         "title": "Does your project address any of this year's focus areas?",
-        "description": "Solo and ensemble repertoire | Female, trans and intersex composers and sound artists | Site-specific works – Please provide a brief description of how your project addresses these areas. This information will be used by the assessors and will not appear in the program. NB: Site-specific works should go further than simply reacting to the site through improvisation. Artists are encouraged to visit Testing Grounds and discuss possibilities with the Tilde team (info@tilde.net.au)"
+        "description": "Solo and ensemble repertoire | Female, trans, intersex and non-binary composers and sound artists | Site-specific works – Please provide a brief description of how your project addresses these areas. This information will be used by the assessors and will not appear in the program. NB: Site-specific works should go further than simply reacting to the site through improvisation. Artists are encouraged to visit Testing Grounds and discuss possibilities with the Tilde team (info@tilde.net.au)"
       },
       "links": {
         "type": "string",
@@ -130,7 +130,7 @@
       },
       "checkedAestheticConsiderations": {
         "type": "boolean",
-        "title": "Please confirm that you have read the aesthetic scope on our website"
+        "title": "Please confirm you have read the aesthetic considerations on our Calls page"
       }
     }
   },
