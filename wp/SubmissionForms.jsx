@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Form from "react-jsonschema-form";
 import axios from 'axios';
 import { Link, withRouter } from 'react-router-dom';
+import {markdown} from 'markdown';
 
 
 function validate(formData, errors) {
@@ -9,7 +10,7 @@ function validate(formData, errors) {
     errors.confirm_email.addError("Email and confirmation do not match");
   }
   if (!formData.checkedAestheticConsiderations) {
-    errors.checkedAestheticConsiderations.addError("Please be sure to read the aesthetic considerations on the previous page and then mark the check box before submitting");
+    errors.checkedAestheticConsiderations.addError("Please be sure to read the aesthetic considerations on the previous page and then confirm in the select box before submitting");
   }
   return errors;
 }
@@ -17,6 +18,20 @@ function validate(formData, errors) {
 const schemas = {
   projects: require('./formSchemas/projects.json')
 }
+
+const MarkdownDescriptionField = ({id, description}) => {
+  var mdDescription = "";
+  if (description) {
+    mdDescription = markdown.toHTML(description);
+  } else {
+     mdDescription = "";
+  }
+  return <div dangerouslySetInnerHTML={{ __html: mdDescription }} />;
+};
+
+const fields = {
+  DescriptionField: MarkdownDescriptionField
+};
 
 const log = (type) => console.log.bind(console, type);
 
@@ -76,8 +91,8 @@ class SubmissionForms extends Component {
                 uiSchema={formSchema.uiSchema}
                 validate={validate}
                 onSubmit={this.onSubmit}
-                onChange={log("changed")}
-                onError={log("errors")} />
+                onError={log("errors")}
+                fields={fields} />
             : <div>{responseMessage}</div>
         }
       </div>
