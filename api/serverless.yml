@@ -53,6 +53,13 @@ functions:
           cors: true
           authorizer:
             arn: arn:aws:cognito-idp:ap-southeast-2:478264992480:userpool/ap-southeast-2_eH7NnrvX1
+  authorise-upload:
+    handler: authorise.main
+    events:
+      - http:
+          path: authorise
+          method: get
+          cors: true
 
 # Pool Id: ap-southeast-2_eH7NnrvX1
 

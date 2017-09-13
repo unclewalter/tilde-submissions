@@ -3,6 +3,7 @@ import Form from "react-jsonschema-form";
 import axios from 'axios';
 import { Link, withRouter } from 'react-router-dom';
 import {markdown} from 'markdown';
+import SubmissionUploads from './SubmissionUploads.jsx';
 
 
 function validate(formData, errors) {
@@ -39,12 +40,13 @@ class SubmissionForms extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      formVisible: true,
-      responseMessage: ''
+      submissionPage: 1,
+      responseMessage: '',
+      submissionID: ''
     };
     const parentThis = this;
     this.onSubmit = ({formData}) => {
-      console.log("Submitting: " + formData);
+      console.log("Submitting: ", JSON.stringify(formData));
       axios.post('https://nu6fl9emuh.execute-api.ap-southeast-2.amazonaws.com/prod/submit', {
         data: formData,
         headers: {
@@ -55,14 +57,15 @@ class SubmissionForms extends Component {
       }).then(function (res) {
           console.log("Response: ", res.data);
           parentThis.setState({
-            formVisible: false,
-            responseMessage: res.data.message
+            submissionPage: 2,
+            responseMessage: res.data.message,
+            submissionID: res.data.submissionID
           });
         })
         .catch(function (err) {
           console.error("Error: ", err.message);
           parentThis.setState({
-            formVisible: false,
+            submissionPage: 3,
             responseMessage: "Error: " + res.data.message
           });
         });
@@ -71,30 +74,39 @@ class SubmissionForms extends Component {
 
   componentDidMount() {
     this.setState({
-      formVisible: true,
-      responseMessage: ''
+      submissionPage: 1,
+      responseMessage: '',
+      submissionID: ''
     });
   }
 
   render() {
     const formSelection = this.props.match.params.form;
     const formSchema = schemas[formSelection];
-    const { formVisible, responseMessage } = this.state;
+    const { submissionPage, responseMessage, submissionID } = this.state;
 
     return (
       <div>
         <Link to="/">&laquo; Back</Link>
         <hr />
-        {
-          formVisible
-            ? <Form schema={formSchema.schema}
+        {(() => {
+          switch (submissionPage) {
+            case 1:
+              return <Form schema={formSchema.schema}
                 uiSchema={formSchema.uiSchema}
                 validate={validate}
                 onSubmit={this.onSubmit}
                 onError={log("errors")}
                 fields={fields} />
-            : <div>{responseMessage}</div>
-        }
+              break;
+            case 2:
+              return <SubmissionUploads schema={formSchema.uploadSchema} submissionID={submissionID} />
+              break;
+            case 3:
+              return <div>{responseMessage}</div>
+              break;
+          }
+        })()}
       </div>
     );
   }

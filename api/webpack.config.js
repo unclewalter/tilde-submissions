@@ -8,7 +8,10 @@ process.env.NODE_ENV = 'production';
 module.exports = {
   // Use all js files in project root (except
   // the webpack config) as an entry
-  entry: globEntries('submit.js'),
+  entry: {
+    submit: './submit.js',
+    authorise: './authorise.js'
+  },
   target: 'node',
   // Since 'aws-sdk' is not compatible with webpack,
   // we exclude all node dependencies
@@ -30,15 +33,3 @@ module.exports = {
     filename: '[name].js'
   },
 };
-
-function globEntries(globPath) {
-  var files = glob.sync(globPath);
-  var entries = {};
-
-  for (var i = 0; i < files.length; i++) {
-    var entry = files[i];
-    entries[path.basename(entry, path.extname(entry))] = './' + entry;
-  }
-
-  return entries;
-}

@@ -2,7 +2,6 @@
 var proc   = require('./process-submission');
 //     email  = require('./confirmation-email'),
 
-var AWS = require('aws-sdk');
 // import uuid from 'uuid';
 // import proc from './process-submission'
 

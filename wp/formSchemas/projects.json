@@ -211,5 +211,17 @@
     "checkedAestheticConsiderations": {
       "ui:widget": "select"
     }
-  }
+  },
+  "uploadSchema": [
+    {
+      "title": "Brief CV",
+      "description": "List major career achievements and developments.",
+      "uploadPath": "cv"
+    },
+    {
+      "title": "Supporting Documentation",
+      "description": "Upload any supporting material such as stage plots, riders or promotional material that may help give the panel better information to assess the suitability of your project for the festival.",
+      "uploadPath": "documentation"
+    }
+  ]
 }
