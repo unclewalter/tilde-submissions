@@ -61,7 +61,7 @@
       "cv": {
         "type": "string",
         "title": "Brief CV",
-        "description": "List major career achievements and developments."
+        "description": "Provide link (i.e. DropBox, Google Drive, etc) to CV file or send as email to [info@tilde.net.au](mailto:info@tilde.net.au) and write 'emailed' here. List major career achievements and developments."
       },
       "project_title": {
         "type": "string",
@@ -121,7 +121,7 @@
       "links": {
         "type": "string",
         "title": "Link(s) to support material",
-        "description": "Show us an example of your work"
+        "description": "Provide link(s) (i.e. DropBox, Google Drive, etc) to CV file or send as email to [info@tilde.net.au](mailto:info@tilde.net.au) and write 'emailed' here. Show us an example of your work."
       },
       "comments": {
         "type": "string",
@@ -137,12 +137,6 @@
   },
   "uiSchema": {
     "artistBio": {
-      "ui:widget": "textarea",
-      "ui:options": {
-        "rows": 5
-      }
-    },
-    "cv": {
       "ui:widget": "textarea",
       "ui:options": {
         "rows": 5
